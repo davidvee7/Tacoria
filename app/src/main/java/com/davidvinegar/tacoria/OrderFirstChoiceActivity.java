@@ -2,12 +2,12 @@ package com.davidvinegar.tacoria;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by davidvinegar on 12/23/16.
@@ -16,7 +16,9 @@ public class OrderFirstChoiceActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutMnaager;
-    private List<FirstChoiceOption> firstChoiceOptionList;
+    private ArrayList<FirstChoiceOption> firstChoiceOptionList;
+
+    private String[] mDataSet = {"Burrito", "Tacos", "Quesadillas Suiza"};
 
     TextView foodName;
     ImageView foodPhoto;
@@ -24,30 +26,34 @@ public class OrderFirstChoiceActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.first_order_choice_layout);
+        setContentView(R.layout.first_order_choice_activity_layout);
 
-        foodPhoto = (ImageView)findViewById(R.id.beautiful_burrito);
-        foodName = (TextView)findViewById(R.id.burrito_text);
+//        foodPhoto = (ImageView)findViewById(R.id.beautiful_burrito);
+//        foodName = (TextView)findViewById(R.id.burrito_text);
+//
+//        foodName.setText("Burrito");
+//        foodPhoto.setImageResource(R.drawable.burrito);
 
-        foodName.setText("Burrito");
-        foodPhoto.setImageResource(R.drawable.burrito);
-//
-//        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-//        mRecyclerView.setHasFixedSize(true);
-//
-//
-//        mLayoutMnaager = new LinearLayoutManager(this);
-//        mRecyclerView.setLayoutManager(mLayoutMnaager);
-//
-//        initializeData();
-//        mAdapter = new FirstChoiceAdapter(firstChoiceOptionList);
-//        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mLayoutMnaager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutMnaager);
+
+        mRecyclerView.setHasFixedSize(true);
+
+
+
+        initializeData();
+        mAdapter = new FirstChoiceAdapter(firstChoiceOptionList);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void initializeData (){
         firstChoiceOptionList = new ArrayList<>();
-        FirstChoiceOption firstChoiceOption = new FirstChoiceOption("Burrito", R.drawable.burrito);
-        firstChoiceOptionList.add(firstChoiceOption);
+        FirstChoiceOption burrito = new FirstChoiceOption("Burrito", R.drawable.burrito);
+        FirstChoiceOption tacos = new FirstChoiceOption("Tacos", R.drawable.tacos);
+
+        firstChoiceOptionList.add(burrito);
+        firstChoiceOptionList.add(tacos);
     }
 
 
