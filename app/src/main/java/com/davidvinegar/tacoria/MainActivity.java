@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view){
-        Intent intent = new Intent(this, OrderFirstChoice.class);
+        Intent intent = new Intent(this, OrderFirstChoiceActivity.class);
         startActivity(intent);
     }
 }
