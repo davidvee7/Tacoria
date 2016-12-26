@@ -1,7 +1,7 @@
 package com.davidvinegar.tacoria;
-
-import android.app.Activity;
+//helpful http://arjunu.com/2015/10/android-recyclerview-with-different-cardviews/
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by davidvinegar on 12/23/16.
  */
-public class OrderFirstChoiceActivity extends Activity {
+public class OrderFirstChoiceActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutMnaager;
