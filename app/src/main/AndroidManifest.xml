@@ -34,5 +34,8 @@
         <activity android:name=".OrderFirstChoiceActivity">
 
         </activity>
+        <activity android:name=".ProteinChoiceActivity">
+            
+        </activity>
     </application>
 </manifest>

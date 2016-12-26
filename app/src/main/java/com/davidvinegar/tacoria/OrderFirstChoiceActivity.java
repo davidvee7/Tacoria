@@ -43,7 +43,7 @@ public class OrderFirstChoiceActivity extends Activity {
 
 
         initializeData();
-        mAdapter = new FirstChoiceAdapter(firstChoiceOptionList);
+        mAdapter = new FirstChoiceAdapter(firstChoiceOptionList, this.getApplicationContext());
         mRecyclerView.setAdapter(mAdapter);
     }
 

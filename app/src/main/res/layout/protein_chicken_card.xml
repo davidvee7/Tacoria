@@ -7,7 +7,7 @@
     android:elevation="100dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/tacoCV"
+    android:id="@+id/chickenCV"
     >
 
 
@@ -20,7 +20,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/taco_photo"
+            android:id="@+id/chicken_photo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
@@ -29,16 +29,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/taco_text"
-            android:layout_toRightOf="@+id/taco_photo"
+            android:id="@+id/chicken_text"
+            android:layout_toRightOf="@+id/chicken_photo"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/person_age"
-            android:layout_toRightOf="@+id/taco_photo"
+            android:id="@+id/chicken_2"
+            android:layout_toRightOf="@+id/chicken_photo"
             android:layout_below="@+id/burrito_text"
             />
 
