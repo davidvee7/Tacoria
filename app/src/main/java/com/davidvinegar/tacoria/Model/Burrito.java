@@ -3,7 +3,7 @@ package com.davidvinegar.tacoria.Model;
 /**
  * Created by davidvinegar on 12/24/16.
  */
-public class Burrito {
+public class Burrito extends Orderable{
     boolean hasGuac;
     boolean hasSteak;
     boolean hasRice;
@@ -11,6 +11,8 @@ public class Burrito {
     boolean hasSalsa;
     boolean hasCheese;
     boolean hasCrema;
+
+
 
     public Burrito(boolean hasGuac,boolean hasSteak,boolean hasRice,boolean hasProtein,boolean hasSalsa,
                    boolean hasCheese, boolean hasCrema){
