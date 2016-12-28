@@ -1,9 +1,13 @@
-package com.davidvinegar.tacoria;
+package com.davidvinegar.tacoria.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
+import com.davidvinegar.tacoria.Adapters.ProteinAdapter;
+import com.davidvinegar.tacoria.R;
 
 import java.util.ArrayList;
 

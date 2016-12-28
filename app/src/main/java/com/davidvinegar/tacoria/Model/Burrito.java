@@ -1,4 +1,4 @@
-package com.davidvinegar.tacoria;
+package com.davidvinegar.tacoria.Model;
 
 /**
  * Created by davidvinegar on 12/24/16.

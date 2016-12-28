@@ -1,4 +1,4 @@
-package com.davidvinegar.tacoria;
+package com.davidvinegar.tacoria.Activities;
 //helpful http://arjunu.com/2015/10/android-recyclerview-with-different-cardviews/
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.davidvinegar.tacoria.Adapters.FirstChoiceAdapter;
+import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
+import com.davidvinegar.tacoria.R;
 
 import java.util.ArrayList;
 

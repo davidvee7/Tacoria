@@ -1,4 +1,4 @@
-package com.davidvinegar.tacoria;
+package com.davidvinegar.tacoria.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.davidvinegar.tacoria.Activities.ProteinChoiceActivity;
+import com.davidvinegar.tacoria.R;
 
 import java.util.ArrayList;
 
