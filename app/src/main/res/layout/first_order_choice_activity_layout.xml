@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
-        android:id="@+id/firstchoice_appbar"
+        android:id="@+id/firstchoice_header_id"
         layout="@layout/firstchoice_header"/>
     <!--<android.support.v7.widget.Toolbar-->
         <!--android:id="@+id/firstChoice_Toolbar"-->
