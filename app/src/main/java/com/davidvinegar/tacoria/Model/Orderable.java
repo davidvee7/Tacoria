@@ -9,7 +9,7 @@ public class Orderable {
     public Orderable(){
 
     }
-    
+
     public Orderable(int cost){
         this.cost = cost;
     }
