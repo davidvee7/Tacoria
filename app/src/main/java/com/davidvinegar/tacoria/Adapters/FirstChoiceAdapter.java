@@ -111,9 +111,6 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
 
         }
 
-        //old ways
-//        viewHolder.foodName.setText(mDataSet.get(position).name);
-//        viewHolder.foodPhoto.setImageResource(mDataSet.get(position).photoID);
     }
 
     @Override

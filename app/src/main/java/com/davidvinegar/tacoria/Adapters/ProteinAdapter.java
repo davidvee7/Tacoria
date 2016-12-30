@@ -1,5 +1,6 @@
 package com.davidvinegar.tacoria.Adapters;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +22,13 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
     public static final int CHICKEN = 1;
 
     public static class ProteinChoiceHolder extends RecyclerView.ViewHolder{
-
+        CardView steakCard;
+        CardView chickenCard;
         public ProteinChoiceHolder(View v){
             super(v);
+            steakCard = (CardView) v.findViewById(R.id.steakCV);
+            chickenCard = (CardView)v.findViewById(R.id.chickenCV);
+
         }
     }
     public class SteakViewHolder extends ProteinAdapter.ProteinChoiceHolder {
@@ -79,7 +84,7 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
             final SteakViewHolder holder = (SteakViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
-            holder.isSelectedButton.setOnClickListener(new View.OnClickListener() {
+            holder.steakCard.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
