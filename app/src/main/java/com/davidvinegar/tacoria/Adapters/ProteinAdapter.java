@@ -29,11 +29,13 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
     public class SteakViewHolder extends ProteinAdapter.ProteinChoiceHolder {
         TextView name;
         ImageView photo;
+        ImageView isSelectedButton;
+        boolean steakIsSelected;
         public SteakViewHolder(View v){
             super(v);
             this.name = (TextView)v.findViewById(R.id.steak_text);
             this.photo = (ImageView)v.findViewById(R.id.steak_photo);
-
+            this.isSelectedButton = (ImageView)v.findViewById(R.id.isSelectedButton);
         }
     }
 
@@ -59,7 +61,9 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
         if (viewType == STEAK){
             v=LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.protein_steak_card,viewGroup,false);
-            return new SteakViewHolder(v);
+            SteakViewHolder steakViewHolder = new SteakViewHolder(v);
+            steakViewHolder.steakIsSelected = false;
+            return steakViewHolder;
         } else {
             v = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.protein_chicken_card,viewGroup,false);
@@ -72,9 +76,23 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
     public void onBindViewHolder(ProteinAdapter.ProteinChoiceHolder viewHolder, int position){
 
         if(viewHolder.getItemViewType() == STEAK){
-            SteakViewHolder holder = (SteakViewHolder) viewHolder;
+            final SteakViewHolder holder = (SteakViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
+            holder.isSelectedButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if (holder.steakIsSelected){
+                        holder.isSelectedButton.setImageResource(R.drawable.plussign);
+                        holder.steakIsSelected = false;
+                    }
+                    else{
+                        holder.isSelectedButton.setImageResource(R.drawable.checkmark);
+                        holder.steakIsSelected = true;
+                    }
+                }
+            });
         }
         else{
             ChickenViewHolder holder = (ChickenViewHolder) viewHolder;

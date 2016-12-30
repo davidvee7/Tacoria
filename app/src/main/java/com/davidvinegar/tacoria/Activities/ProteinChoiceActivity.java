@@ -40,6 +40,7 @@ public class ProteinChoiceActivity extends Activity {
         initializeData();
         mProteinAdapter = new ProteinAdapter(proteinOptionsList);
         mProteinRecyclerView.setAdapter(mProteinAdapter);
+//        Button steakPlus = (Button)findViewById(R.id.isSelectedButton);
     }
 
     private void initializeData (){

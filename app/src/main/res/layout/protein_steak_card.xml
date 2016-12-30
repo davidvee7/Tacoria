@@ -42,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/plussign"
+            android:id="@+id/isSelectedButton"
             android:layout_alignParentRight="true"
 
             />
