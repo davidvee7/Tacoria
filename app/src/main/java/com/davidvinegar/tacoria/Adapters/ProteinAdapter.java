@@ -47,10 +47,14 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
     public class ChickenViewHolder extends ProteinAdapter.ProteinChoiceHolder {
         TextView name;
         ImageView photo;
+        ImageView chickenIsSelectedButton;
+        boolean chickenIsSelected;
+
         public ChickenViewHolder(View v){
             super(v);
             this.name = (TextView)v.findViewById(R.id.chicken_text);
             this.photo = (ImageView)v.findViewById(R.id.chicken_photo);
+            this.chickenIsSelectedButton = (ImageView)v.findViewById(R.id.chickenIsSelectedButton);
 
         }
     }
@@ -72,6 +76,8 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
         } else {
             v = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.protein_chicken_card,viewGroup,false);
+            ChickenViewHolder chickenViewHolder = new ChickenViewHolder(v);
+            chickenViewHolder.chickenIsSelected = false;
             return new ChickenViewHolder(v);
         }
 
@@ -100,10 +106,23 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
             });
         }
         else{
-            ChickenViewHolder holder = (ChickenViewHolder) viewHolder;
+            final ChickenViewHolder holder = (ChickenViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
+            holder.chickenCard.setOnClickListener(new View.OnClickListener() {
 
+                @Override
+                public void onClick(View v) {
+                    if (holder.chickenIsSelected){
+                        holder.chickenIsSelectedButton.setImageResource(R.drawable.plussign);
+                        holder.chickenIsSelected = false;
+                    }
+                    else{
+                        holder.chickenIsSelectedButton.setImageResource(R.drawable.checkmark);
+                        holder.chickenIsSelected = true;
+                    }
+                }
+            });
         }
     }
 
