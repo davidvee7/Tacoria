@@ -6,7 +6,9 @@
     android:id="@+id/chickenCV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="100dp">
+    android:elevation="100dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    >
 
 
     <RelativeLayout
@@ -32,11 +34,11 @@
 
 
         <ImageView
+            android:id="@+id/chickenIsSelectedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/plussign"
-            android:id="@+id/chickenIsSelectedButton"
             android:layout_alignParentRight="true"
+            android:src="@drawable/plussign"
 
             />
 

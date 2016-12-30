@@ -3,10 +3,10 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
 
-    android:elevation="100dp"
+    android:id="@+id/steakCV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/steakCV"
+    android:elevation="100dp"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardPreventCornerOverlap="false"
     card_view:cardUseCompatPadding="true"
@@ -17,33 +17,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
 
         <ImageView
+            android:id="@+id/steak_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/steak_photo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            />
+            android:layout_marginRight="16dp" />
 
         <TextView
+            android:id="@+id/steak_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/steak_text"
-            android:layout_toRightOf="@+id/steak_photo"
             android:layout_alignParentTop="true"
-            android:textSize="30sp"
-            />
+            android:layout_toRightOf="@+id/steak_photo"
+            android:textSize="30sp" />
 
         <ImageView
+            android:id="@+id/isSelectedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/plussign"
-            android:id="@+id/isSelectedButton"
             android:layout_alignParentRight="true"
+            android:src="@drawable/plussign"
 
             />
 
