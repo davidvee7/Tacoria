@@ -108,6 +108,13 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
                 TacoViewHolder holder = (TacoViewHolder) viewHolder;
                 holder.name.setText(mDataSet.get(position).name);
                 holder.photo.setImageResource(mDataSet.get(position).photoID);
+                holder.tacoCard.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                public void onClick(View v){
+                        Intent intent = new Intent(v.getContext(),ProteinChoiceActivity.class);
+                        v.getContext().startActivity(intent);
+                    }
+                });
 
         }
 
