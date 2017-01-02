@@ -12,8 +12,11 @@ import android.widget.TextView;
 
 import com.davidvinegar.tacoria.Activities.ProteinChoiceActivity;
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.BurritoEvent;
 
 import java.util.ArrayList;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by davidvinegar on 12/23/16.
@@ -91,6 +94,7 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
 
     @Override
     public void onBindViewHolder(FirstChoiceHolder viewHolder, int position){
+        EventBus firstChoiceAdapterBus = EventBus.getDefault();
 
         if(viewHolder.getItemViewType() == BURRITO){
             BurritoViewHolder holder = (BurritoViewHolder) viewHolder;
@@ -99,8 +103,8 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
             holder.burritoCard.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    Intent intent = new Intent(v.getContext(), ProteinChoiceActivity.class);
-                    v.getContext().startActivity(intent);
+                    EventBus.getDefault().post(new BurritoEvent());
+
                 }
             });
         }

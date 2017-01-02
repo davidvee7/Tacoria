@@ -14,15 +14,8 @@ public class Burrito extends Orderable{
 
 
 
-    public Burrito(boolean hasGuac,boolean hasSteak,boolean hasRice,boolean hasProtein,boolean hasSalsa,
-                   boolean hasCheese, boolean hasCrema){
-        this.hasGuac = hasGuac;
-        this.hasSteak = hasSteak;
-        this.hasRice = hasRice;
-        this.hasProtein = hasProtein;
-        this.hasSalsa = hasSalsa;
-        this.hasCheese = hasCheese;
-        this.hasCrema = hasCrema;
+    public Burrito(){
+
     }
 
     private int getCost(){
@@ -35,6 +28,13 @@ public class Burrito extends Orderable{
             totalCost+=1;
         }
         return totalCost;
+    }
+    public void addSteak(){
+        this.hasSteak = true;
+    }
+
+    public void removeSteak(){
+        this.hasSteak = false;
     }
 
 }

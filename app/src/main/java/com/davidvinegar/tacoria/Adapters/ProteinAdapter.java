@@ -9,8 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.SteakEvent;
+import com.davidvinegar.tacoria.events.UnsteakEvent;
 
 import java.util.ArrayList;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by davidvinegar on 12/23/16.
@@ -97,10 +101,14 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
                     if (holder.steakIsSelected){
                         holder.isSelectedButton.setImageResource(R.drawable.plussign);
                         holder.steakIsSelected = false;
+                        EventBus.getDefault().post(new UnsteakEvent());
+
                     }
                     else{
                         holder.isSelectedButton.setImageResource(R.drawable.checkmark);
                         holder.steakIsSelected = true;
+                        EventBus.getDefault().post(new SteakEvent());
+
                     }
                 }
             });
