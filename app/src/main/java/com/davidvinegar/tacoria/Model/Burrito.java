@@ -6,6 +6,7 @@ package com.davidvinegar.tacoria.Model;
 public class Burrito extends Orderable{
     boolean hasGuac;
     boolean hasSteak;
+    boolean hasChicken;
     boolean hasRice;
     boolean hasProtein;
     boolean hasSalsa;
@@ -37,4 +38,7 @@ public class Burrito extends Orderable{
         this.hasSteak = false;
     }
 
+    public void addChicken(){
+        this.hasChicken = true;
+    }
 }

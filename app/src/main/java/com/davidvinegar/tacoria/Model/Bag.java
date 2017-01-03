@@ -20,11 +20,11 @@ public class Bag {
         return bag;
     }
 
-    private void addItemToBag(Orderable item){
+    public void addItemToBag(Orderable item){
         itemsInOrder.add(item);
     }
 
-    private void removeItemFromBag(Orderable item){
+    public void removeItemFromBag(Orderable item){
         itemsInOrder.remove(item);
     }
 

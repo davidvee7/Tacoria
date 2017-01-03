@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -33,6 +32,9 @@ public class ProteinChoiceActivity extends Activity {
     private String[] mDataSet = {"Steak", "Chicken"};
 
     Burrito burrito;
+    String foodType;
+    boolean hasSteak;
+    boolean hasChicken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -45,7 +47,10 @@ public class ProteinChoiceActivity extends Activity {
 
         mProteinRecyclerView.setHasFixedSize(true);
 
-
+        Bundle bundle = getIntent().getExtras();
+        if (bundle.getString("foodType")!= null){
+            this.foodType = bundle.getString("foodType");
+        }
 
         initializeData();
         EventBus.getDefault().register(this);
@@ -58,6 +63,9 @@ public class ProteinChoiceActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),OrderSummaryActivity.class);
+                intent.putExtra("foodType", ProteinChoiceActivity.this.foodType);
+                intent.putExtra("hasSteak", ProteinChoiceActivity.this.hasSteak);
+                intent.putExtra("hasChicken", ProteinChoiceActivity.this.hasChicken);
                 startActivity(intent);
             }
         });
@@ -78,20 +86,11 @@ public class ProteinChoiceActivity extends Activity {
     }
 
     public void onEvent(SteakEvent event){
-        Log.v("steakEvent","got the steak event");
 
-        if (this.burrito!=null){
-            Log.v("addSteak","Successfully addes teak");
-            this.burrito.addSteak();
-        }
+        hasSteak = true;
     }
     public void onEvent(UnsteakEvent event){
-        Log.v("UnsteakEvent","got the Unsteak event");
-
-        if (this.burrito!=null){
-            Log.v("removeSteak", "succesffully removed steak");
-            this.burrito.removeSteak();
-        }
+        hasSteak = false;
     }
 
 }

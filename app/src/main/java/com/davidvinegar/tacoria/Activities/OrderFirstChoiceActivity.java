@@ -71,7 +71,9 @@ public class OrderFirstChoiceActivity extends AppCompatActivity {
 
     public void onEvent(BurritoEvent event){
         Log.v("burrito event", "successfully got to burrito event");
+
         Intent intent = new Intent(getApplicationContext(),ProteinChoiceActivity.class);
+        intent.putExtra("foodType","Burrito");
         EventBus.getDefault().unregister(this);
 
         startActivity(intent);
