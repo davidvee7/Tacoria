@@ -2,7 +2,11 @@ package com.davidvinegar.tacoria.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 
+import com.davidvinegar.tacoria.Adapters.FirstChoiceAdapter;
 import com.davidvinegar.tacoria.Model.Bag;
 import com.davidvinegar.tacoria.Model.Orderable;
 import com.davidvinegar.tacoria.R;
@@ -17,6 +21,8 @@ import java.util.ArrayList;
 public class OrderSummaryActivity extends Activity {
 
     private ArrayList<Orderable> orderSummaryList;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,18 @@ public class OrderSummaryActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         buildOrderable(bundle);
         buildOrderSummary();
+        Bag bag = Bag.getInstance();
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mRecyclerView.setHasFixedSize(true);
+
+
+
+        mAdapter = new FirstChoiceAdapter(firstChoiceOptionList, this.getApplicationContext());
+        mRecyclerView.setAdapter(mAdapter);
 
     }
 

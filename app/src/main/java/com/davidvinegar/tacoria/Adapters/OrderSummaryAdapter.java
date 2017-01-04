@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davidvinegar.tacoria.Activities.ProteinChoiceActivity;
+import com.davidvinegar.tacoria.Model.Orderable;
 import com.davidvinegar.tacoria.R;
 import com.davidvinegar.tacoria.events.BurritoEvent;
 
@@ -19,22 +20,22 @@ import java.util.ArrayList;
 import de.greenrobot.event.EventBus;
 
 /**
- * Created by davidvinegar on 12/23/16.
+ * Created by davidvinegar on 1/4/17.
  */
-public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.FirstChoiceHolder>{
-    private ArrayList<FirstChoiceOption> mDataSet;
+public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapter.OrderHolder>{
+    private ArrayList<Orderable> mDataSet;
     private Context context;
 
     public static final int BURRITO = 0;
     public static final int TACO = 1;
     public static final int QUESADILLA = 2;
 
-    public static class FirstChoiceHolder extends RecyclerView.ViewHolder{
+    public static class OrderHolder extends RecyclerView.ViewHolder{
 
         CardView burritoCard;
         CardView tacoCard;
 
-        public FirstChoiceHolder(View v){
+        public OrderHolder(View v){
 
             super(v);
             burritoCard = (CardView) v.findViewById(R.id.burritoCV);
@@ -42,7 +43,7 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
         }
     }
 
-    public class BurritoViewHolder extends FirstChoiceHolder{
+    public class BurritoViewHolder extends OrderHolder{
         TextView name;
         ImageView photo;
         public BurritoViewHolder(View v){
@@ -53,7 +54,7 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
         }
     }
 
-    public class TacoViewHolder extends FirstChoiceHolder{
+    public class TacoViewHolder extends OrderHolder{
         TextView name;
         ImageView photo;
         public TacoViewHolder(View v){
@@ -64,18 +65,18 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
         }
     }
 
-    public FirstChoiceAdapter(ArrayList<FirstChoiceOption> firstChoiceOptionsList, Context context){
+    public OrderSummaryAdapter(ArrayList<Orderable> orderablesList, Context context){
 //        Log.e("TAGGG", "constructor called successfully");
 //        Log.e("TAGGG2", String.valueOf(firstChoiceOptionsList.size()));
         this.context = context;
-        mDataSet = firstChoiceOptionsList;
+        mDataSet = orderablesList;
     }
 
     @Override
-    public FirstChoiceHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
+    public OrderHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
         View v;
         if (viewType == BURRITO){
-            v=LayoutInflater.from(viewGroup.getContext())
+            v= LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.firstchoice_burrito_card,viewGroup,false);
             return new BurritoViewHolder(v);
         } else {
@@ -87,32 +88,19 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
     }
 
     @Override
-    public void onBindViewHolder(FirstChoiceHolder viewHolder, int position){
-        EventBus firstChoiceAdapterBus = EventBus.getDefault();
+    public void onBindViewHolder(OrderHolder viewHolder, int position){
 
         if(viewHolder.getItemViewType() == BURRITO){
             BurritoViewHolder holder = (BurritoViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
-            holder.burritoCard.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    EventBus.getDefault().post(new BurritoEvent());
 
-                }
-            });
         }
         else{
-                TacoViewHolder holder = (TacoViewHolder) viewHolder;
-                holder.name.setText(mDataSet.get(position).name);
-                holder.photo.setImageResource(mDataSet.get(position).photoID);
-                holder.tacoCard.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                public void onClick(View v){
-                        Intent intent = new Intent(v.getContext(),ProteinChoiceActivity.class);
-                        v.getContext().startActivity(intent);
-                    }
-                });
+            TacoViewHolder holder = (TacoViewHolder) viewHolder;
+            holder.name.setText(mDataSet.get(position).name);
+            holder.photo.setImageResource(mDataSet.get(position).photoID);
+
 
         }
 
