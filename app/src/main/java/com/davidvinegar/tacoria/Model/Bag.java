@@ -28,4 +28,8 @@ public class Bag {
         itemsInOrder.remove(item);
     }
 
+    public ArrayList<Orderable> getBag(){
+        return this.itemsInOrder;
+    }
+
 }

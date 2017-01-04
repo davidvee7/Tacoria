@@ -40,11 +40,6 @@ public class OrderFirstChoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_order_choice_activity_layout);
 
-//        foodPhoto = (ImageView)findViewById(R.id.beautiful_burrito);
-//        foodName = (TextView)findViewById(R.id.burrito_text);
-//
-//        foodName.setText("Burrito");
-//        foodPhoto.setImageResource(R.drawable.burrito);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutMnaager = new LinearLayoutManager(this);
