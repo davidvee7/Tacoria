@@ -74,7 +74,13 @@ public class OrderSummaryActivity extends Activity {
         }
     }
 
-    
 
+    @Override
+    public void onBackPressed(){
+        if (bag.getSizeOrderablesList()>0){
+            bag.removeLastItem();
+        }
+        super.onBackPressed();
+    }
 
 }

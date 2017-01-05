@@ -28,8 +28,15 @@ public class Bag {
         itemsInOrder.remove(item);
     }
 
+    public void removeLastItem(){
+        itemsInOrder.remove(itemsInOrder.size()-1);
+    }
     public ArrayList<Orderable> getOrderablesList(){
         return this.itemsInOrder;
+    }
+
+    public int getSizeOrderablesList(){
+        return itemsInOrder.size();
     }
 
 }
