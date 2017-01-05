@@ -5,11 +5,11 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/protein_header_id"
+        android:id="@+id/order_summary_header_id"
         layout="@layout/order_summary_header" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/protein_recyclerView"
+        android:id="@+id/order_summary_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,7 +21,7 @@
         android:gravity="center|bottom">
 
         <Button
-            android:id="@+id/continueButton"
+            android:id="@+id/order_summary_continue_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"

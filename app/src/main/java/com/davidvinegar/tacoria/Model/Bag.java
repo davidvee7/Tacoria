@@ -28,7 +28,7 @@ public class Bag {
         itemsInOrder.remove(item);
     }
 
-    public ArrayList<Orderable> getBag(){
+    public ArrayList<Orderable> getOrderablesList(){
         return this.itemsInOrder;
     }
 
