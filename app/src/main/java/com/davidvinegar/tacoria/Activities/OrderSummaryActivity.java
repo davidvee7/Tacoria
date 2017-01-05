@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.davidvinegar.tacoria.Adapters.OrderSummaryAdapter;
 import com.davidvinegar.tacoria.Model.Bag;
@@ -20,6 +21,7 @@ public class OrderSummaryActivity extends Activity {
 //    private ArrayList<Orderable> orderSummaryList;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
+    Bag bag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class OrderSummaryActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         buildOrderable(bundle);
         buildOrderSummary();
-        Bag bag = Bag.getInstance();
+        this.bag = Bag.getInstance();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.order_summary_recyclerview);
         mLayoutManager = new LinearLayoutManager(this);
@@ -38,14 +40,14 @@ public class OrderSummaryActivity extends Activity {
         mRecyclerView.setHasFixedSize(true);
 
 
-
+        Log.v("bag",String.valueOf(bag.getOrderablesList().size()));
         OrderSummaryAdapter mAdapter = new OrderSummaryAdapter(bag.getOrderablesList());
         mRecyclerView.setAdapter(mAdapter);
 
     }
 
     private void buildOrderable(Bundle bundle){
-        if (bundle.getString("foodtype")!= null){
+        if (bundle.getString("foodType")!= null){
             if (bundle.getString("foodType").equals("Burrito")){
                 Orderable burrito = new Orderable();
 
@@ -55,9 +57,14 @@ public class OrderSummaryActivity extends Activity {
                 if (bundle.getBoolean("hasChicken") == true){
                     burrito.addChicken();
                 }
+                burrito.setFoodType("Burrito");
+                Log.v("burritoBuild", "successfully built burrito");
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(burrito);
             }
+        }
+        else{
+            Log.e("burritoNull", "burrito food type is not found");
         }
     }
 
@@ -66,6 +73,8 @@ public class OrderSummaryActivity extends Activity {
             orderable.getcost();
         }
     }
+
+    
 
 
 }

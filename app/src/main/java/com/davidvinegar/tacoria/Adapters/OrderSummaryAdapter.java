@@ -2,6 +2,7 @@ package com.davidvinegar.tacoria.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,9 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     public OrderSummaryAdapter.OrderHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
         View v= LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.ordersummary_item_textview,viewGroup,false);
-            return new OrderHolder((TextView)v);
+
+        OrderHolder oh = new OrderHolder((TextView)v);
+        return oh;
 
 
     }
@@ -51,6 +54,7 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     @Override
     public void onBindViewHolder(OrderHolder viewHolder, int position){
 
+        Log.v("getFoodType", "foodtype= " + mDataSet.get(position).getFoodType());
         viewHolder.name.setText(mDataSet.get(position).getFoodType());
     }
 
@@ -64,9 +68,9 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
         return mDataSet.size();
     }
 
-    @Override
-    public int getItemViewType(int position){
-        int[] mDataSetTypes = {0, 1};
-        return mDataSetTypes[position];
-    }
+//    @Override
+//    public int getItemViewType(int position){
+//        int[] mDataSetTypes = {0, 1};
+//        return mDataSetTypes[position];
+//    }
 }
