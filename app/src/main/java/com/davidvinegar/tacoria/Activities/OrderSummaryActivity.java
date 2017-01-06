@@ -62,6 +62,21 @@ public class OrderSummaryActivity extends Activity {
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(burrito);
             }
+            else if(bundle.getString("foodType").equals("Taco")){
+                Orderable taco = new Orderable();
+
+                if (bundle.getBoolean("hasSteak") == true){
+                    taco.addSteak();
+                }
+                if (bundle.getBoolean("hasChicken") == true){
+                    taco.addChicken();
+                }
+                taco.setFoodType("Taco");
+                Log.v("taco", "successfully built taco");
+                Bag bag = Bag.getInstance();
+                bag.addItemToBag(taco);
+
+            }
         }
         else{
             Log.e("burritoNull", "burrito food type is not found");

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +13,7 @@ import com.davidvinegar.tacoria.Adapters.FirstChoiceAdapter;
 import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
 import com.davidvinegar.tacoria.R;
 import com.davidvinegar.tacoria.events.BurritoEvent;
+import com.davidvinegar.tacoria.events.TacoEvent;
 
 import java.util.ArrayList;
 
@@ -65,11 +65,18 @@ public class OrderFirstChoiceActivity extends AppCompatActivity {
     }
 
     public void onEvent(BurritoEvent event){
-        Log.v("burrito event", "successfully got to burrito event");
 
         Intent intent = new Intent(getApplicationContext(),ProteinChoiceActivity.class);
         intent.putExtra("foodType","Burrito");
-        EventBus.getDefault().unregister(this);
+
+        startActivity(intent);
+
+    }
+
+    public void onEvent(TacoEvent event){
+
+        Intent intent = new Intent(getApplicationContext(),ProteinChoiceActivity.class);
+        intent.putExtra("foodType","Taco");
 
         startActivity(intent);
 
