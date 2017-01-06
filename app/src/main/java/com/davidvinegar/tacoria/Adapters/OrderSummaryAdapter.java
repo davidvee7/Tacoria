@@ -1,8 +1,8 @@
 package com.davidvinegar.tacoria.Adapters;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +23,16 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
 
 
     public static class OrderHolder extends RecyclerView.ViewHolder{
-        public TextView name;
-        TextView price;
+        public TextView orderableName;
+        public TextView orderablePrice;
+        public CardView orderCard;
 
-
-        public OrderHolder(TextView v){
+        public OrderHolder(CardView v){
 
             super(v);
-            name = v;
+            orderCard = (CardView) v.findViewById(R.id.orderSummaryCV);
+            this.orderableName = (TextView) v.findViewById(R.id.orderable_name);
+            this.orderablePrice = (TextView) v.findViewById(R.id.orderablePrice);
 
         }
     }
@@ -43,9 +45,9 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     @Override
     public OrderSummaryAdapter.OrderHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
         View v= LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.ordersummary_item_textview,viewGroup,false);
+                    .inflate(R.layout.ordersummary_card,viewGroup,false);
 
-        OrderHolder oh = new OrderHolder((TextView)v);
+        OrderHolder oh = new OrderHolder((CardView)v);
         return oh;
 
 
@@ -53,9 +55,9 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
 
     @Override
     public void onBindViewHolder(OrderHolder viewHolder, int position){
+        viewHolder.orderableName.setText(mDataSet.get(position).getFoodType());
+        viewHolder.orderablePrice.setText("$" + String.valueOf(mDataSet.get(position).getcost()));
 
-        Log.v("getFoodType", "foodtype= " + mDataSet.get(position).getFoodType());
-        viewHolder.name.setText(mDataSet.get(position).getFoodType());
     }
 
     @Override
