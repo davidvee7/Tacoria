@@ -27,12 +27,12 @@ public class Orderable {
         this.cost = cost;
     }
 
-    public float getcost(){
-        int totalCost=0;
+    public double getcost(){
+        double totalCost=0.00;
         if (foodType == "Burrito"){
-            totalCost = 7;
+            totalCost = 7.00;
             if (this.hasGuac){
-                totalCost += 1.5;
+                totalCost += 1.50;
             }
 
             if(this.hasSteak){
@@ -40,6 +40,17 @@ public class Orderable {
             }
 
         }
+        else if(foodType == "Tacos"){
+            totalCost = 7.00;
+            if (this.hasGuac){
+                totalCost += 1.5;
+            }
+
+            if(this.hasSteak){
+                totalCost+=2.5;
+            }
+        }
+
         return totalCost;
     }
 

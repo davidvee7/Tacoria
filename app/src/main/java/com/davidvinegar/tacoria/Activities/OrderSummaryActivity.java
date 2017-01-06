@@ -57,7 +57,7 @@ public class OrderSummaryActivity extends Activity {
                 burrito.setFoodType("Burrito");
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(burrito);
-            } else if (bundle.getString("foodType").equals("Taco")) {
+            } else if (bundle.getString("foodType").equals("Tacos")) {
                 Orderable taco = new Orderable();
 
                 if (bundle.getBoolean("hasSteak") == true) {
@@ -66,7 +66,7 @@ public class OrderSummaryActivity extends Activity {
                 if (bundle.getBoolean("hasChicken") == true) {
                     taco.addChicken();
                 }
-                taco.setFoodType("Taco");
+                taco.setFoodType("Tacos");
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(taco);
 

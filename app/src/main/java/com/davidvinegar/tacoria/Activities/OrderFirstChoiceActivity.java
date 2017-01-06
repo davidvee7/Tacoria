@@ -69,7 +69,7 @@ public class OrderFirstChoiceActivity extends AppCompatActivity {
     public void onEvent(TacoEvent event){
 
         Intent intent = new Intent(getApplicationContext(),ProteinChoiceActivity.class);
-        intent.putExtra("foodType","Taco");
+        intent.putExtra("foodType","Tacos");
 
         startActivity(intent);
 
