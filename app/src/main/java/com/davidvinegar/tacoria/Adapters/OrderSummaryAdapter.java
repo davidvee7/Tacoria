@@ -68,9 +68,5 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
         return mDataSet.size();
     }
 
-//    @Override
-//    public int getItemViewType(int position){
-//        int[] mDataSetTypes = {0, 1};
-//        return mDataSetTypes[position];
-//    }
+
 }

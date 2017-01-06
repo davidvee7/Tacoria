@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.ChickenEvent;
 import com.davidvinegar.tacoria.events.SteakEvent;
+import com.davidvinegar.tacoria.events.UnchickenEvent;
 import com.davidvinegar.tacoria.events.UnsteakEvent;
 
 import java.util.ArrayList;
@@ -19,32 +21,35 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by davidvinegar on 12/23/16.
  */
-public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinChoiceHolder>{
+public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinChoiceHolder> {
     private ArrayList<FirstChoiceOption> mDataSet;
 
     public static final int STEAK = 0;
     public static final int CHICKEN = 1;
 
-    public static class ProteinChoiceHolder extends RecyclerView.ViewHolder{
+    public static class ProteinChoiceHolder extends RecyclerView.ViewHolder {
         CardView steakCard;
         CardView chickenCard;
-        public ProteinChoiceHolder(View v){
+
+        public ProteinChoiceHolder(View v) {
             super(v);
             steakCard = (CardView) v.findViewById(R.id.steakCV);
-            chickenCard = (CardView)v.findViewById(R.id.chickenCV);
+            chickenCard = (CardView) v.findViewById(R.id.chickenCV);
 
         }
     }
+
     public class SteakViewHolder extends ProteinAdapter.ProteinChoiceHolder {
         TextView name;
         ImageView photo;
         ImageView isSelectedButton;
         boolean steakIsSelected;
-        public SteakViewHolder(View v){
+
+        public SteakViewHolder(View v) {
             super(v);
-            this.name = (TextView)v.findViewById(R.id.steak_text);
-            this.photo = (ImageView)v.findViewById(R.id.steak_photo);
-            this.isSelectedButton = (ImageView)v.findViewById(R.id.isSelectedButton);
+            this.name = (TextView) v.findViewById(R.id.steak_text);
+            this.photo = (ImageView) v.findViewById(R.id.steak_photo);
+            this.isSelectedButton = (ImageView) v.findViewById(R.id.isSelectedButton);
         }
     }
 
@@ -54,32 +59,32 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
         ImageView chickenIsSelectedButton;
         boolean chickenIsSelected;
 
-        public ChickenViewHolder(View v){
+        public ChickenViewHolder(View v) {
             super(v);
-            this.name = (TextView)v.findViewById(R.id.chicken_text);
-            this.photo = (ImageView)v.findViewById(R.id.chicken_photo);
-            this.chickenIsSelectedButton = (ImageView)v.findViewById(R.id.chickenIsSelectedButton);
+            this.name = (TextView) v.findViewById(R.id.chicken_text);
+            this.photo = (ImageView) v.findViewById(R.id.chicken_photo);
+            this.chickenIsSelectedButton = (ImageView) v.findViewById(R.id.chickenIsSelectedButton);
 
         }
     }
 
-    public ProteinAdapter(ArrayList<FirstChoiceOption> proteinList){
+    public ProteinAdapter(ArrayList<FirstChoiceOption> proteinList) {
 
         mDataSet = proteinList;
     }
 
     @Override
-    public ProteinChoiceHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
+    public ProteinChoiceHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v;
-        if (viewType == STEAK){
-            v=LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.protein_steak_card,viewGroup,false);
+        if (viewType == STEAK) {
+            v = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.protein_steak_card, viewGroup, false);
             SteakViewHolder steakViewHolder = new SteakViewHolder(v);
             steakViewHolder.steakIsSelected = false;
             return steakViewHolder;
         } else {
             v = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.protein_chicken_card,viewGroup,false);
+                    .inflate(R.layout.protein_chicken_card, viewGroup, false);
             ChickenViewHolder chickenViewHolder = new ChickenViewHolder(v);
             chickenViewHolder.chickenIsSelected = false;
             return new ChickenViewHolder(v);
@@ -88,9 +93,9 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
     }
 
     @Override
-    public void onBindViewHolder(ProteinAdapter.ProteinChoiceHolder viewHolder, int position){
+    public void onBindViewHolder(ProteinAdapter.ProteinChoiceHolder viewHolder, int position) {
 
-        if(viewHolder.getItemViewType() == STEAK){
+        if (viewHolder.getItemViewType() == STEAK) {
             final SteakViewHolder holder = (SteakViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
@@ -98,13 +103,12 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
 
                 @Override
                 public void onClick(View v) {
-                    if (holder.steakIsSelected){
+                    if (holder.steakIsSelected) {
                         holder.isSelectedButton.setImageResource(R.drawable.plussign);
                         holder.steakIsSelected = false;
                         EventBus.getDefault().post(new UnsteakEvent());
 
-                    }
-                    else{
+                    } else {
                         holder.isSelectedButton.setImageResource(R.drawable.checkmark);
                         holder.steakIsSelected = true;
                         EventBus.getDefault().post(new SteakEvent());
@@ -112,8 +116,7 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
                     }
                 }
             });
-        }
-        else{
+        } else {
             final ChickenViewHolder holder = (ChickenViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
@@ -121,13 +124,14 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
 
                 @Override
                 public void onClick(View v) {
-                    if (holder.chickenIsSelected){
+                    if (holder.chickenIsSelected) {
                         holder.chickenIsSelectedButton.setImageResource(R.drawable.plussign);
                         holder.chickenIsSelected = false;
-                    }
-                    else{
+                        EventBus.getDefault().post(new UnchickenEvent());
+                    } else {
                         holder.chickenIsSelectedButton.setImageResource(R.drawable.checkmark);
                         holder.chickenIsSelected = true;
+                        EventBus.getDefault().post(new ChickenEvent());
                     }
                 }
             });
@@ -135,17 +139,17 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView){
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return mDataSet.size();
     }
 
     @Override
-    public int getItemViewType(int position){
+    public int getItemViewType(int position) {
         int[] mDataSetTypes = {0, 1};
         return mDataSetTypes[position];
     }

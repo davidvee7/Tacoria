@@ -25,8 +25,7 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
     private Context context;
 
     public static final int BURRITO = 0;
-    public static final int TACO = 1;
-    public static final int QUESADILLA = 2;
+
 
     public static class FirstChoiceHolder extends RecyclerView.ViewHolder {
 
@@ -88,7 +87,6 @@ public class FirstChoiceAdapter extends RecyclerView.Adapter<FirstChoiceAdapter.
 
     @Override
     public void onBindViewHolder(FirstChoiceHolder viewHolder, int position) {
-        EventBus firstChoiceAdapterBus = EventBus.getDefault();
 
         if (viewHolder.getItemViewType() == BURRITO) {
             BurritoViewHolder holder = (BurritoViewHolder) viewHolder;

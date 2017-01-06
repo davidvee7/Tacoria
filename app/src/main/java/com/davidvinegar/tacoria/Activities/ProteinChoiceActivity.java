@@ -11,7 +11,9 @@ import android.widget.Button;
 import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
 import com.davidvinegar.tacoria.Adapters.ProteinAdapter;
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.ChickenEvent;
 import com.davidvinegar.tacoria.events.SteakEvent;
+import com.davidvinegar.tacoria.events.UnchickenEvent;
 import com.davidvinegar.tacoria.events.UnsteakEvent;
 
 import java.util.ArrayList;
@@ -82,6 +84,14 @@ public class ProteinChoiceActivity extends Activity {
 
     public void onEvent(UnsteakEvent event) {
         hasSteak = false;
+    }
+
+    public void onEvent(ChickenEvent event){
+        hasChicken = true;
+    }
+
+    public void onEvent(UnchickenEvent event){
+        hasChicken = false;
     }
 
 }
