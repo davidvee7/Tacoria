@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.davidvinegar.tacoria.Adapters.FirstChoiceAdapter;
 import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
@@ -27,11 +25,6 @@ public class OrderFirstChoiceActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutMnaager;
     private ArrayList<FirstChoiceOption> firstChoiceOptionList;
-
-    private String[] mDataSet = {"Burrito", "Tacos", "Quesadillas Suiza"};
-
-    TextView foodName;
-    ImageView foodPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
