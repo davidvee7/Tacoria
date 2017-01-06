@@ -10,9 +10,7 @@ import android.widget.Button;
 
 import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
 import com.davidvinegar.tacoria.Adapters.ProteinAdapter;
-import com.davidvinegar.tacoria.Model.Burrito;
 import com.davidvinegar.tacoria.R;
-import com.davidvinegar.tacoria.events.BurritoEvent;
 import com.davidvinegar.tacoria.events.SteakEvent;
 import com.davidvinegar.tacoria.events.UnsteakEvent;
 
@@ -29,15 +27,12 @@ public class ProteinChoiceActivity extends Activity {
     private RecyclerView.LayoutManager mProteinLayoutManager;
     private ArrayList<FirstChoiceOption> proteinOptionsList;
 
-    private String[] mDataSet = {"Steak", "Chicken"};
-
-    Burrito burrito;
     String foodType;
     boolean hasSteak;
     boolean hasChicken;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.protein_choice_activity_layout);
 
@@ -48,7 +43,7 @@ public class ProteinChoiceActivity extends Activity {
         mProteinRecyclerView.setHasFixedSize(true);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle.getString("foodType")!= null){
+        if (bundle.getString("foodType") != null) {
             this.foodType = bundle.getString("foodType");
         }
 
@@ -57,12 +52,11 @@ public class ProteinChoiceActivity extends Activity {
 
         mProteinAdapter = new ProteinAdapter(proteinOptionsList);
         mProteinRecyclerView.setAdapter(mProteinAdapter);
-//        Button steakPlus = (Button)findViewById(R.id.isSelectedButton);
-        Button continueButton = (Button)findViewById(R.id.continueButton);
+        Button continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),OrderSummaryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OrderSummaryActivity.class);
                 intent.putExtra("foodType", ProteinChoiceActivity.this.foodType);
                 intent.putExtra("hasSteak", ProteinChoiceActivity.this.hasSteak);
                 intent.putExtra("hasChicken", ProteinChoiceActivity.this.hasChicken);
@@ -71,7 +65,7 @@ public class ProteinChoiceActivity extends Activity {
         });
     }
 
-    private void initializeData (){
+    private void initializeData() {
         proteinOptionsList = new ArrayList<>();
         FirstChoiceOption steak = new FirstChoiceOption("Steak", R.drawable.steak);
         FirstChoiceOption chicken = new FirstChoiceOption("Chicken", R.drawable.chicken);
@@ -80,16 +74,13 @@ public class ProteinChoiceActivity extends Activity {
         proteinOptionsList.add(chicken);
     }
 
-    public void onEvent(BurritoEvent event){
-        this.burrito = event.getBurrito();
 
-    }
-
-    public void onEvent(SteakEvent event){
+    public void onEvent(SteakEvent event) {
 
         hasSteak = true;
     }
-    public void onEvent(UnsteakEvent event){
+
+    public void onEvent(UnsteakEvent event) {
         hasSteak = false;
     }
 
