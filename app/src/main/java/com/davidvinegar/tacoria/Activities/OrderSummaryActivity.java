@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.davidvinegar.tacoria.Adapters.OrderSummaryAdapter;
 import com.davidvinegar.tacoria.Model.Bag;
@@ -18,7 +17,6 @@ import com.davidvinegar.tacoria.R;
 //order summary should display a recyclerview of food items ordered
 public class OrderSummaryActivity extends Activity {
 
-//    private ArrayList<Orderable> orderSummaryList;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     Bag bag;
@@ -40,59 +38,53 @@ public class OrderSummaryActivity extends Activity {
         mRecyclerView.setHasFixedSize(true);
 
 
-        Log.v("bag",String.valueOf(bag.getOrderablesList().size()));
         OrderSummaryAdapter mAdapter = new OrderSummaryAdapter(bag.getOrderablesList());
         mRecyclerView.setAdapter(mAdapter);
 
     }
 
-    private void buildOrderable(Bundle bundle){
-        if (bundle.getString("foodType")!= null){
-            if (bundle.getString("foodType").equals("Burrito")){
+    private void buildOrderable(Bundle bundle) {
+        if (bundle.getString("foodType") != null) {
+            if (bundle.getString("foodType").equals("Burrito")) {
                 Orderable burrito = new Orderable();
 
-                if (bundle.getBoolean("hasSteak") == true){
+                if (bundle.getBoolean("hasSteak") == true) {
                     burrito.addSteak();
                 }
-                if (bundle.getBoolean("hasChicken") == true){
+                if (bundle.getBoolean("hasChicken") == true) {
                     burrito.addChicken();
                 }
                 burrito.setFoodType("Burrito");
-                Log.v("burritoBuild", "successfully built burrito");
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(burrito);
-            }
-            else if(bundle.getString("foodType").equals("Taco")){
+            } else if (bundle.getString("foodType").equals("Taco")) {
                 Orderable taco = new Orderable();
 
-                if (bundle.getBoolean("hasSteak") == true){
+                if (bundle.getBoolean("hasSteak") == true) {
                     taco.addSteak();
                 }
-                if (bundle.getBoolean("hasChicken") == true){
+                if (bundle.getBoolean("hasChicken") == true) {
                     taco.addChicken();
                 }
                 taco.setFoodType("Taco");
-                Log.v("taco", "successfully built taco");
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(taco);
 
             }
         }
-        else{
-            Log.e("burritoNull", "burrito food type is not found");
-        }
+
     }
 
-    private void buildOrderSummary(){
-        for (Orderable orderable: Bag.getInstance().getOrderablesList()){
+    private void buildOrderSummary() {
+        for (Orderable orderable : Bag.getInstance().getOrderablesList()) {
             orderable.getcost();
         }
     }
 
 
     @Override
-    public void onBackPressed(){
-        if (bag.getSizeOrderablesList()>0){
+    public void onBackPressed() {
+        if (bag.getSizeOrderablesList() > 0) {
             bag.removeLastItem();
         }
         super.onBackPressed();
