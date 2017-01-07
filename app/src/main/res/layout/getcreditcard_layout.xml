@@ -7,24 +7,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.devmarvel.creditcardentry.library.CreditCardForm
-        android:id="@+id/credit_card_form"
-        android:layout_width="wrap_content"
+    <com.simplify.android.sdk.CardEditor
+        android:id="@+id/card_editor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:include_zip="false"/>
+        app:enabled="true"
+        ></com.simplify.android.sdk.CardEditor>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button_authorize_cc"
-        android:text="AUTHORIZE"/>
-
-    <fragment
-        android:id="@+id/wallet_fragment"
-        android:name="com.google.android.gms.wallet.fragment.SupportWalletFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        wallet:environment="test"
-        wallet:fragmentMode="buyButton" />
-
+        android:id="@+id/checkout_button"/>
 </LinearLayout>
