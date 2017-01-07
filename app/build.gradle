@@ -27,6 +27,8 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.+'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.github.dbachelder:CreditCardEntry:1.4.7'
+    compile 'com.stripe:stripe-android:2.0.2'
+
 
 
 }
