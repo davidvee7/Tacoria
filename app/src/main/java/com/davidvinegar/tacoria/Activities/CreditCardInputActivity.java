@@ -32,7 +32,6 @@ public class CreditCardInputActivity extends Activity{
         form.setOnCardValidCallback(cardValidCallback);
 
 
-
 //
 //        buttonAuthorize = (Button) findViewById(R.id.button_authorize_cc);
 //        buttonAuthorize.setOnClickListener(new View.OnClickListener() {

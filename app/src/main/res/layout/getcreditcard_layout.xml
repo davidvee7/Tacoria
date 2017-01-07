@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:wallet="http://schemas.android.com/apk/res-auto"
+
     android:id="@+id/credit_linear_layer"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -17,5 +19,12 @@
         android:id="@+id/button_authorize_cc"
         android:text="AUTHORIZE"/>
 
+    <fragment
+        android:id="@+id/wallet_fragment"
+        android:name="com.google.android.gms.wallet.fragment.SupportWalletFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        wallet:environment="test"
+        wallet:fragmentMode="buyButton" />
 
 </LinearLayout>
