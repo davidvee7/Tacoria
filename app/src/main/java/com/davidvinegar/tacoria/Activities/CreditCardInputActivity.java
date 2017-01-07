@@ -32,21 +32,6 @@ public class CreditCardInputActivity extends Activity{
         form.setOnCardValidCallback(cardValidCallback);
 
 
-//
-//        buttonAuthorize = (Button) findViewById(R.id.button_authorize_cc);
-//        buttonAuthorize.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(form.isCreditCardValid()){
-//                    CreditCard card = form.getCreditCard();
-//
-//                }
-//                else{
-//                    Toast.makeText(getApplicationContext(),"Invalid Credit Card",Toast.LENGTH_LONG);
-//                }
-//            }
-//        });
-
     }
 
 
