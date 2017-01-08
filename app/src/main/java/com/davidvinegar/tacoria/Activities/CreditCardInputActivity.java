@@ -72,6 +72,7 @@ public class CreditCardInputActivity extends Activity{
                     @Override
                 public void onSuccess(CardToken cardToken){
 
+                        // TODO Here is where you would send the token ID and payment information back to your server for processing...
                     }
 
                     @Override

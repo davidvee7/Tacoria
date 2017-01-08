@@ -6,6 +6,16 @@
     android:id="@+id/credit_linear_layer"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include
+        android:id="@+id/creditcard_header_id"
+        layout="@layout/getcreditcard_header"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:text="Real quick.  Just enter your card digits, click 'Place Order', and we will begin preparing your food!" />
+
+
 
     <com.simplify.android.sdk.CardEditor
         android:id="@+id/card_editor"
@@ -17,5 +27,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Place Order"
         android:id="@+id/checkout_button"/>
 </LinearLayout>
