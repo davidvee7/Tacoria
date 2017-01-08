@@ -1,6 +1,7 @@
 package com.davidvinegar.tacoria.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,6 +74,9 @@ public class CreditCardInputActivity extends Activity{
                 public void onSuccess(CardToken cardToken){
 
                         // TODO Here is where you would send the token ID and payment information back to your server for processing...
+                        Intent intent = new Intent(getApplicationContext(),ThankYouActivity.class);
+                        startActivity(intent);
+
                     }
 
                     @Override
