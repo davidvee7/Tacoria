@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.davidvinegar.tacoria.Model.Bag;
 import com.davidvinegar.tacoria.R;
 import com.devmarvel.creditcardentry.library.CardValidCallback;
 import com.devmarvel.creditcardentry.library.CreditCard;
@@ -75,6 +76,10 @@ public class CreditCardInputActivity extends Activity{
 
                         // TODO Here is where you would send the token ID and payment information back to your server for processing...
                         Intent intent = new Intent(getApplicationContext(),ThankYouActivity.class);
+
+                        Bag bag = Bag.getInstance();
+                        bag.clearOrderables();
+
                         startActivity(intent);
 
                     }

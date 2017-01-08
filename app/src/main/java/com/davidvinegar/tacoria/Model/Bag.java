@@ -39,4 +39,8 @@ public class Bag {
         return itemsInOrder.size();
     }
 
+    public void clearOrderables(){
+        itemsInOrder.clear();
+    }
+
 }

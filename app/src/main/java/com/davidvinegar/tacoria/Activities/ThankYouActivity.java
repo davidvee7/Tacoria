@@ -30,7 +30,7 @@ public class ThankYouActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
-                
+
             }
         });
         findViewById(R.id.text_try_again).setOnClickListener(new View.OnClickListener() {
