@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white">
+        >
 
 
 
@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Thanks for your order. While you wait, check\nout our famous 'Nickel Scones'"
+                android:text="Thanks for your order. Please come to our location in New Brunswick to pick up your order.'"
                 android:textColor="#808080"/>
 
 
@@ -47,7 +47,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:padding="15dp"
-            android:text="SHOP MORE"
+            android:text="Back to main menu"
             android:textColor="@color/common_plus_signin_btn_text_light"/>
 
     </RelativeLayout>

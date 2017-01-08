@@ -1,6 +1,7 @@
 package com.davidvinegar.tacoria.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ViewFlipper;
@@ -27,7 +28,9 @@ public class ThankYouActivity extends Activity {
         findViewById(R.id.text_shop_more).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+                
             }
         });
         findViewById(R.id.text_try_again).setOnClickListener(new View.OnClickListener() {
