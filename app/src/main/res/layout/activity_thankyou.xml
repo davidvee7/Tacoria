@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Thanks for your order. Please come to our location in New Brunswick to pick up your order.'"
+                android:text="Thanks for your order. Please come to our location to pick up your order.'"
                 android:textColor="#808080"/>
 
 
