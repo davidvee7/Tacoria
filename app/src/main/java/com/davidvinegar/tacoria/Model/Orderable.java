@@ -87,7 +87,7 @@ public class Orderable {
         String description = "";
         if (descriptors.size()>0) {
             description+="With ";
-            for (int i = 1; i < descriptors.size()-1; i++) {
+            for (int i = 0; i < descriptors.size()-1; i++) {
                 description += descriptors.get(i) + ", ";
 
             }
