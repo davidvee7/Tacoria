@@ -1,5 +1,7 @@
 package com.davidvinegar.tacoria.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by davidvinegar on 12/28/16.
  */
@@ -72,6 +74,26 @@ public class Orderable {
 
     public void addChicken(){
         this.hasChicken = true;
+    }
+
+    public String getDescription(){
+        ArrayList<String> descriptors = new ArrayList<String>();
+        if (this.hasSteak){
+            descriptors.add("Steak");
+        }
+        if (this.hasChicken){
+            descriptors.add("Chicken");
+        }
+        String description = "";
+        if (descriptors.size()>0) {
+            description+="With ";
+            for (int i = 1; i < descriptors.size()-1; i++) {
+                description += descriptors.get(i) + ", ";
+
+            }
+            description += descriptors.get(descriptors.size()-1);
+        }
+        return description;
     }
 
 }

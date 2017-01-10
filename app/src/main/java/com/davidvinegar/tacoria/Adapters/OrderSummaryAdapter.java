@@ -25,6 +25,7 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     public static class OrderHolder extends RecyclerView.ViewHolder{
         public TextView orderableName;
         public TextView orderablePrice;
+        public TextView orderableDescription;
         public CardView orderCard;
 
         public OrderHolder(CardView v){
@@ -33,7 +34,7 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
             orderCard = (CardView) v.findViewById(R.id.orderSummaryCV);
             this.orderableName = (TextView) v.findViewById(R.id.orderable_name);
             this.orderablePrice = (TextView) v.findViewById(R.id.orderablePrice);
-
+            this.orderableDescription = (TextView) v.findViewById(R.id.orderable_description);
         }
     }
 
@@ -57,7 +58,7 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     public void onBindViewHolder(OrderHolder viewHolder, int position){
         viewHolder.orderableName.setText(mDataSet.get(position).getFoodType());
         viewHolder.orderablePrice.setText("$" + String.valueOf(mDataSet.get(position).getcost()));
-
+        viewHolder.orderableDescription.setText(mDataSet.get(position).getDescription());
     }
 
     @Override
