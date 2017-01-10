@@ -46,6 +46,16 @@ public class OrderSummaryActivity extends Activity {
         mRecyclerView.setAdapter(mAdapter);
 
         continueCheckoutButton = (Button) findViewById(R.id.continue_To_Checkout);
+        Button addFoodButton = (Button) findViewById(R.id.add_food_button);
+
+        addFoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),OrderFirstChoiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
         continueCheckoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +63,8 @@ public class OrderSummaryActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     private void buildOrderable(Bundle bundle) {
