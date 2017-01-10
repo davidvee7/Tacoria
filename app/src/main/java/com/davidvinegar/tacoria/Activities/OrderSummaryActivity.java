@@ -97,6 +97,7 @@ public class OrderSummaryActivity extends Activity {
             }
         }
 
+
     }
 
     private void buildOrderSummary() {
@@ -108,7 +109,8 @@ public class OrderSummaryActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if (bag.getSizeOrderablesList() > 0) {
+        if (bag.getSizeOrderablesList() > 1) {
+            bag.removeLastItem();
             bag.removeLastItem();
         }
         super.onBackPressed();
