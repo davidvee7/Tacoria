@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:background="@color/colorRed"
+            android:background="@drawable/button_red"
             android:text="Continue"
             android:textColor="@android:color/white"
             android:textSize="20sp"
