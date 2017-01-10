@@ -1,32 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include
         android:id="@+id/order_summary_header_id"
-        layout="@layout/order_summary_header" />
+        layout="@layout/order_summary_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/order_summary_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_summary_header_id"
+        >
 
     </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
+        android:id="@+id/ordersummary_buttons_ll"
+        android:layout_above="@id/order_summary_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|bottom">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        >
+
+        <Button
+            android:id="@+id/add_food_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/button_red"
+            android:text="Add More Food"
+            android:layout_marginRight="20dp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/continue_To_Checkout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:background="@color/colorRed"
-            android:text="Add Payment Information"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@drawable/button_red"
+            android:text="Continue To Checkout"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -34,6 +55,4 @@
     </LinearLayout>
 
 
-
-
-</LinearLayout>
+</RelativeLayout>
