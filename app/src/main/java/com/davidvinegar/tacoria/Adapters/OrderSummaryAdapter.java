@@ -27,16 +27,25 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
         public TextView orderablePrice;
         public TextView orderableDescription;
         public CardView orderCard;
+        public TextView orderableRemove;
 
-        public OrderHolder(CardView v){
+        public OrderHolder(View v){
 
             super(v);
+
             orderCard = (CardView) v.findViewById(R.id.orderSummaryCV);
             this.orderableName = (TextView) v.findViewById(R.id.orderable_name);
             this.orderablePrice = (TextView) v.findViewById(R.id.orderablePrice);
             this.orderableDescription = (TextView) v.findViewById(R.id.orderable_description);
+            this.orderableRemove = (TextView) v.findViewById(R.id.remove_orderable_text);
+
         }
+
+
+
     }
+
+
 
 
     public OrderSummaryAdapter(ArrayList<Orderable> orderablesList){
@@ -55,10 +64,18 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     }
 
     @Override
-    public void onBindViewHolder(OrderHolder viewHolder, int position){
+    public void onBindViewHolder(final OrderHolder viewHolder, int position){
         viewHolder.orderableName.setText(mDataSet.get(position).getFoodType());
         viewHolder.orderablePrice.setText("$" + String.valueOf(mDataSet.get(position).getcost()));
         viewHolder.orderableDescription.setText(mDataSet.get(position).getDescription());
+        viewHolder.orderableRemove.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                int newPosition = viewHolder.getAdapterPosition();
+                mDataSet.remove(newPosition);
+                notifyItemRemoved(newPosition);
+                notifyItemChanged(newPosition,mDataSet.size());
+            }
+        });
     }
 
     @Override
@@ -71,5 +88,15 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
         return mDataSet.size();
     }
 
+
+
+
+    public void removeAt(int position){
+
+        mDataSet.remove(position);
+        notifyItemRemoved(position);
+        notifyItemChanged(position, mDataSet.size());
+
+    }
 
 }

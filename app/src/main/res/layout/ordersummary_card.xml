@@ -9,8 +9,7 @@
     android:elevation="100dp"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardPreventCornerOverlap="false"
-    card_view:cardUseCompatPadding="true"
-    >
+    card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,8 +29,8 @@
             android:id="@+id/orderable_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/orderable_name"
             android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/orderable_name"
             android:textSize="12sp" />
 
         <TextView
@@ -39,11 +38,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:textSize="18sp"
+            android:textSize="18sp" />
 
-
-            />
-
+        <TextView
+            android:id="@+id/remove_orderable_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/orderablePrice"
+            android:clickable="true"
+            android:text="Remove"
+            android:textColor="@color/wallet_holo_blue_light"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>
