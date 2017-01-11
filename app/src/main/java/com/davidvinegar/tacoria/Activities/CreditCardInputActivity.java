@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.davidvinegar.tacoria.Model.Bag;
 import com.davidvinegar.tacoria.R;
-import com.devmarvel.creditcardentry.library.CardValidCallback;
-import com.devmarvel.creditcardentry.library.CreditCard;
 import com.simplify.android.sdk.Card;
 import com.simplify.android.sdk.CardEditor;
 import com.simplify.android.sdk.CardToken;
@@ -22,12 +19,7 @@ import com.simplify.android.sdk.Simplify;
 public class CreditCardInputActivity extends Activity{
     private Button buttonAuthorize;
     Simplify simplify;
-    CardValidCallback cardValidCallback = new CardValidCallback() {
-        @Override
-        public void cardValid(CreditCard creditCard) {
-            Toast.makeText(CreditCardInputActivity.this,"Card Valid and Complete", Toast.LENGTH_LONG);
-        }
-    };
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
