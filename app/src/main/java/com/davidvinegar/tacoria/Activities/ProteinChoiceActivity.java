@@ -58,7 +58,7 @@ public class ProteinChoiceActivity extends Activity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), OrderSummaryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChooseToppingsActivity.class);
                 intent.putExtra("foodType", ProteinChoiceActivity.this.foodType);
                 intent.putExtra("hasSteak", ProteinChoiceActivity.this.hasSteak);
                 intent.putExtra("hasChicken", ProteinChoiceActivity.this.hasChicken);

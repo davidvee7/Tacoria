@@ -143,14 +143,14 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+
+
+
+
     @Override
     public int getItemCount() {
         return mDataSet.size();
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        int[] mDataSetTypes = {0, 1};
-        return mDataSetTypes[position];
-    }
+
 }

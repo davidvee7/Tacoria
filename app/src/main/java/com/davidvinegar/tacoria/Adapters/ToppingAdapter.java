@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davidvinegar.tacoria.R;
-import com.davidvinegar.tacoria.events.ChickenEvent;
+import com.davidvinegar.tacoria.events.LettuceEvent;
 import com.davidvinegar.tacoria.events.SalsaEvent;
-import com.davidvinegar.tacoria.events.UnchickenEvent;
+import com.davidvinegar.tacoria.events.UnlettuceEvent;
 import com.davidvinegar.tacoria.events.UnsalsaEvent;
 
 import java.util.ArrayList;
