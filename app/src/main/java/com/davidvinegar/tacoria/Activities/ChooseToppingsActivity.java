@@ -51,14 +51,11 @@ public class ChooseToppingsActivity extends Activity{
 
         Bundle bundle = getIntent().getExtras();
         if (bundle.getString("foodType") != null) {
+
             this.foodType = bundle.getString("foodType");
         }
-        if (bundle.getString("hasChicken")!= null){
-            this.hasChicken = bundle.getBoolean("hasChicken");
-        }
-        if (bundle.getString("hasSteak")!= null){
-            this.hasSteak = bundle.getBoolean("hasSteak");
-        }
+        this.hasChicken = bundle.getBoolean("hasChicken");
+        this.hasSteak = bundle.getBoolean("hasSteak");
 
         initializeData();
         EventBus.getDefault().register(this);
