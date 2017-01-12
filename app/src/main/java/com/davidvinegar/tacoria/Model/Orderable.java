@@ -12,51 +12,52 @@ public class Orderable {
     boolean hasSteak;
     boolean hasChicken;
     boolean hasRice;
+    boolean hasLettuce;
     boolean hasProtein;
     boolean hasSalsa;
     boolean hasCheese;
     boolean hasCrema;
     int id;
-    public Orderable(){
+
+    public Orderable() {
 
     }
 
-    public Orderable(float cost){
+    public Orderable(float cost) {
         this.cost = cost;
     }
 
-    public void setCost(float cost){
+    public void setCost(float cost) {
         this.cost = cost;
     }
 
-    public double getcost(){
-        double totalCost=0.00;
-        if (foodType == "Burrito"){
+    public double getcost() {
+        double totalCost = 0.00;
+        if (foodType == "Burrito") {
             totalCost = 7.00;
-            if (this.hasGuac){
+            if (this.hasGuac) {
                 totalCost += 1.50;
             }
 
-            if(this.hasSteak){
-                totalCost+=1;
+            if (this.hasSteak) {
+                totalCost += 1;
             }
 
-        }
-        else if(foodType == "Tacos"){
+        } else if (foodType == "Tacos") {
             totalCost = 7.00;
-            if (this.hasGuac){
+            if (this.hasGuac) {
                 totalCost += 1.5;
             }
 
-            if(this.hasSteak){
-                totalCost+=2.5;
+            if (this.hasSteak) {
+                totalCost += 2.5;
             }
         }
 
         return totalCost;
     }
 
-    public String getFoodType(){
+    public String getFoodType() {
         return this.foodType;
     }
 
@@ -64,34 +65,56 @@ public class Orderable {
         this.foodType = name;
     }
 
-    public void addSteak(){
+    public void addSteak() {
         this.hasSteak = true;
     }
 
-    public void removeSteak(){
+    public void removeSteak() {
         this.hasSteak = false;
     }
 
-    public void addChicken(){
+    public void addChicken() {
         this.hasChicken = true;
     }
 
-    public String getDescription(){
+    public void addLettuce() {
+        this.hasLettuce = true;
+    }
+
+    public void removeLettuce() {
+        this.hasLettuce = false;
+    }
+
+    public void addSalsa() {
+        this.hasSalsa = true;
+    }
+
+    public void removeSalsa() {
+        this.hasSalsa = false;
+    }
+
+    public String getDescription() {
         ArrayList<String> descriptors = new ArrayList<String>();
-        if (this.hasSteak){
+        if (this.hasSteak) {
             descriptors.add("Steak");
         }
-        if (this.hasChicken){
+        if (this.hasChicken) {
             descriptors.add("Chicken");
         }
+        if (this.hasSalsa) {
+            descriptors.add("Salsa");
+        }
+        if (this.hasLettuce) {
+            descriptors.add("Lettuce");
+        }
         String description = "";
-        if (descriptors.size()>0) {
-            description+="With ";
-            for (int i = 0; i < descriptors.size()-1; i++) {
+        if (descriptors.size() > 0) {
+            description += "With ";
+            for (int i = 0; i < descriptors.size() - 1; i++) {
                 description += descriptors.get(i) + ", ";
 
             }
-            description += descriptors.get(descriptors.size()-1);
+            description += descriptors.get(descriptors.size() - 1);
         }
         return description;
     }

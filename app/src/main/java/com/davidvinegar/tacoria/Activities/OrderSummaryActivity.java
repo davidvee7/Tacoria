@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -78,6 +79,13 @@ public class OrderSummaryActivity extends Activity {
                 if (bundle.getBoolean("hasChicken") == true) {
                     burrito.addChicken();
                 }
+                if (bundle.getBoolean("hasSalsa") == true) {
+                    burrito.addSalsa();
+                }
+                if (bundle.getBoolean("hasLettuce") == true) {
+                    burrito.addLettuce();
+                    Log.v("buildOrderable", "added lettuce ot burrito");
+                }
                 burrito.setFoodType("Burrito");
                 Bag bag = Bag.getInstance();
                 bag.addItemToBag(burrito);
@@ -89,6 +97,13 @@ public class OrderSummaryActivity extends Activity {
                 }
                 if (bundle.getBoolean("hasChicken") == true) {
                     taco.addChicken();
+                }
+
+                if (bundle.getBoolean("hasSalsa") == true) {
+                    taco.addSalsa();
+                }
+                if (bundle.getBoolean("hasLettuce") == true) {
+                    taco.addLettuce();
                 }
                 taco.setFoodType("Tacos");
                 Bag bag = Bag.getInstance();

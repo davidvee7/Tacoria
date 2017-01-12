@@ -2,6 +2,7 @@ package com.davidvinegar.tacoria.Adapters;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,14 +45,14 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
     public class SalsaViewHolder extends ToppingAdapter.ToppingHolder {
         TextView name;
         ImageView photo;
-        ImageView isSelectedButton;
+        ImageView salsaIsSelectedButton;
         boolean salsaIsSelected;
 
         public SalsaViewHolder(View v) {
             super(v);
             this.name = (TextView) v.findViewById(R.id.salsa_text);
             this.photo = (ImageView) v.findViewById(R.id.salsa_photo);
-            this.isSelectedButton = (ImageView) v.findViewById(R.id.salsaIsSelectedButton);
+            this.salsaIsSelectedButton = (ImageView) v.findViewById(R.id.salsaIsSelectedButton);
         }
     }
 
@@ -106,19 +107,19 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
                 @Override
                 public void onClick(View v) {
                     if (holder.salsaIsSelected) {
-                        holder.isSelectedButton.setImageResource(R.drawable.plussign);
+                        holder.salsaIsSelectedButton.setImageResource(R.drawable.plussign);
                         holder.salsaIsSelected = false;
                         EventBus.getDefault().post(new UnsalsaEvent());
 
                     } else {
-                        holder.isSelectedButton.setImageResource(R.drawable.checkmark);
+                        holder.salsaIsSelectedButton.setImageResource(R.drawable.checkmark);
                         holder.salsaIsSelected = true;
                         EventBus.getDefault().post(new SalsaEvent());
 
                     }
                 }
             });
-        } else {
+        } else if (viewHolder.getItemViewType()== LETTUCE){
             final LettuceViewHolder holder = (LettuceViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
@@ -133,6 +134,7 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
                     } else {
                         holder.lettuceIsSelectedButton.setImageResource(R.drawable.checkmark);
                         holder.lettuceIsSelected = true;
+                        Log.v("lettuceevent create", "lettuce event created");
                         EventBus.getDefault().post(new LettuceEvent());
                     }
                 }
