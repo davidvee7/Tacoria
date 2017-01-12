@@ -36,7 +36,7 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
 
             orderCard = (CardView) v.findViewById(R.id.orderSummaryCV);
             this.orderableName = (TextView) v.findViewById(R.id.orderable_name);
-            this.orderablePrice = (TextView) v.findViewById(R.id.orderablePrice);
+            this.orderablePrice = (TextView) v.findViewById(R.id.orderable_price);
             this.orderableDescription = (TextView) v.findViewById(R.id.orderable_description);
             this.orderableRemove = (TextView) v.findViewById(R.id.remove_orderable_text);
 
