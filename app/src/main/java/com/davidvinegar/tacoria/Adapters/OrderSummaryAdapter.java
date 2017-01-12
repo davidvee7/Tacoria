@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.davidvinegar.tacoria.Model.Orderable;
 import com.davidvinegar.tacoria.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -66,7 +67,9 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     @Override
     public void onBindViewHolder(final OrderHolder viewHolder, int position){
         viewHolder.orderableName.setText(mDataSet.get(position).getFoodType());
-        viewHolder.orderablePrice.setText("$" + String.valueOf(mDataSet.get(position).getcost()));
+        DecimalFormat df = new DecimalFormat("0.00");
+        String cost = df.format(mDataSet.get(position).getcost());//.replaceAll("\\.00$", "");
+        viewHolder.orderablePrice.setText("$" + cost);
         viewHolder.orderableDescription.setText(mDataSet.get(position).getDescription());
         viewHolder.orderableRemove.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
