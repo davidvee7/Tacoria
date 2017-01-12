@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
-import com.davidvinegar.tacoria.Adapters.ProteinAdapter;
+import com.davidvinegar.tacoria.Adapters.ToppingAdapter;
 import com.davidvinegar.tacoria.R;
 import com.davidvinegar.tacoria.events.ChickenEvent;
 import com.davidvinegar.tacoria.events.SteakEvent;
@@ -41,9 +41,9 @@ public class ChooseToppingsActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.protein_choice_activity_layout);
+        setContentView(R.layout.toppings_activity_layout);
 
-        mToppingsRecyclerView = (RecyclerView) findViewById(R.id.protein_recyclerView);
+        mToppingsRecyclerView = (RecyclerView) findViewById(R.id.toppings_recyclerView);
         mToppingsLayoutManager = new LinearLayoutManager(this);
         mToppingsRecyclerView.setLayoutManager(mToppingsLayoutManager);
 
@@ -63,9 +63,9 @@ public class ChooseToppingsActivity extends Activity{
         initializeData();
         EventBus.getDefault().register(this);
 
-        mToppingsAdapter = new ProteinAdapter(toppingsList);
+        mToppingsAdapter = new ToppingAdapter(toppingsList);
         mToppingsRecyclerView.setAdapter(mToppingsAdapter);
-        Button continueButton = (Button) findViewById(R.id.continueButton);
+        Button continueButton = (Button) findViewById(R.id.toppingsContinueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
