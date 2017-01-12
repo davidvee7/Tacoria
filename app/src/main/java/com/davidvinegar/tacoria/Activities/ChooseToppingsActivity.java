@@ -89,6 +89,7 @@ public class ChooseToppingsActivity extends Activity {
 
         toppingsList.add(salsa);
         toppingsList.add(lettuce);
+
 //        toppingsList.add(cheese);
 //        toppingsList.add(sourCream);
     }

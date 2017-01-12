@@ -119,7 +119,7 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
                     }
                 }
             });
-        } else if (viewHolder.getItemViewType()== LETTUCE){
+        } else if (viewHolder.getItemViewType() == LETTUCE) {
             final LettuceViewHolder holder = (LettuceViewHolder) viewHolder;
             holder.name.setText(mDataSet.get(position).name);
             holder.photo.setImageResource(mDataSet.get(position).photoID);
@@ -147,10 +147,16 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+
     @Override
     public int getItemCount() {
         return mDataSet.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        int[] mDataSetTypes = {0, 1};
+        return mDataSetTypes[position];
 
+    }
 }
