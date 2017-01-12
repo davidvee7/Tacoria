@@ -152,5 +152,10 @@ public class ProteinAdapter extends RecyclerView.Adapter<ProteinAdapter.ProteinC
         return mDataSet.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        int[] mDataSetTypes = {0, 1};
+        return mDataSetTypes[position];
 
+    }
 }
