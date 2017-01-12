@@ -84,7 +84,9 @@ public class OrderSummaryActivity extends Activity {
                 }
                 if (bundle.getBoolean("hasLettuce") == true) {
                     burrito.addLettuce();
-                    Log.v("buildOrderable", "added lettuce ot burrito");
+                }
+                if (bundle.getBoolean("hasCheese") == true) {
+                    burrito.addCheese();
                 }
                 burrito.setFoodType("Burrito");
                 Bag bag = Bag.getInstance();
@@ -104,6 +106,9 @@ public class OrderSummaryActivity extends Activity {
                 }
                 if (bundle.getBoolean("hasLettuce") == true) {
                     taco.addLettuce();
+                }
+                if (bundle.getBoolean("hasCheese") == true) {
+                    taco.addCheese();
                 }
                 taco.setFoodType("Tacos");
                 Bag bag = Bag.getInstance();

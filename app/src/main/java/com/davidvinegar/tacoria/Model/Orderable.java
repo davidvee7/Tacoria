@@ -93,6 +93,14 @@ public class Orderable {
         this.hasSalsa = false;
     }
 
+    public void addCheese() {
+        this.hasCheese = true;
+    }
+
+    public void removeCheese() {
+        this.hasCheese = false;
+    }
+
     public String getDescription() {
         ArrayList<String> descriptors = new ArrayList<String>();
         if (this.hasSteak) {
@@ -106,6 +114,9 @@ public class Orderable {
         }
         if (this.hasLettuce) {
             descriptors.add("Lettuce");
+        }
+        if (this.hasCheese) {
+            descriptors.add("Cheese");
         }
         String description = "";
         if (descriptors.size() > 0) {

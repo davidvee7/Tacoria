@@ -10,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.CheeseEvent;
 import com.davidvinegar.tacoria.events.LettuceEvent;
 import com.davidvinegar.tacoria.events.SalsaEvent;
+import com.davidvinegar.tacoria.events.UncheeseEvent;
 import com.davidvinegar.tacoria.events.UnlettuceEvent;
 import com.davidvinegar.tacoria.events.UnsalsaEvent;
 
@@ -33,12 +35,12 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
     public static class ToppingHolder extends RecyclerView.ViewHolder {
         CardView salsaCard;
         CardView lettuceCard;
-
+        CardView cheeseCard;
         public ToppingHolder(View v) {
             super(v);
             salsaCard = (CardView) v.findViewById(R.id.salsaCV);
             lettuceCard = (CardView) v.findViewById(R.id.lettuceCV);
-
+            cheeseCard = (CardView) v.findViewById(R.id.cheeseCV);
         }
     }
 
@@ -70,7 +72,20 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
 
         }
     }
+    public class CheeseViewHolder extends ToppingAdapter.ToppingHolder {
+        TextView name;
+        ImageView photo;
+        ImageView cheeseIsSelectedButton;
+        boolean cheeseIsSelected;
 
+        public CheeseViewHolder(View v) {
+            super(v);
+            this.name = (TextView) v.findViewById(R.id.cheese_text);
+            this.photo = (ImageView) v.findViewById(R.id.cheese_photo);
+            this.cheeseIsSelectedButton = (ImageView) v.findViewById(R.id.cheeseIsSelectedButton);
+
+        }
+    }
     public ToppingAdapter(ArrayList<FirstChoiceOption> toppingList) {
 
         mDataSet = toppingList;
@@ -85,13 +100,21 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
             SalsaViewHolder salsaViewHolder = new SalsaViewHolder(v);
             salsaViewHolder.salsaIsSelected = false;
             return salsaViewHolder;
-        } else {
+        } else if (viewType == LETTUCE){
             v = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.topping_lettuce_cv, viewGroup, false);
             LettuceViewHolder lettuceViewHolder = new LettuceViewHolder(v);
             lettuceViewHolder.lettuceIsSelected = false;
             return new LettuceViewHolder(v);
         }
+        else {
+            v = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.topping_cheese_cv, viewGroup, false);
+            CheeseViewHolder cheeseViewHolder = new CheeseViewHolder(v);
+            cheeseViewHolder.cheeseIsSelected = false;
+            return new CheeseViewHolder(v);
+        }
+
 
     }
 
@@ -140,6 +163,26 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
                 }
             });
         }
+        else if (viewHolder.getItemViewType() == CHEESE) {
+            final CheeseViewHolder holder = (CheeseViewHolder) viewHolder;
+            holder.name.setText(mDataSet.get(position).name);
+            holder.photo.setImageResource(mDataSet.get(position).photoID);
+            holder.cheeseCard.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if (holder.cheeseIsSelected) {
+                        holder.cheeseIsSelectedButton.setImageResource(R.drawable.plussign);
+                        holder.cheeseIsSelected = false;
+                        EventBus.getDefault().post(new UncheeseEvent());
+                    } else {
+                        holder.cheeseIsSelectedButton.setImageResource(R.drawable.checkmark);
+                        holder.cheeseIsSelected = true;
+                        EventBus.getDefault().post(new CheeseEvent());
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -155,7 +198,7 @@ public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter.ToppingH
 
     @Override
     public int getItemViewType(int position) {
-        int[] mDataSetTypes = {0, 1};
+        int[] mDataSetTypes = {0, 1,2};
         return mDataSetTypes[position];
 
     }

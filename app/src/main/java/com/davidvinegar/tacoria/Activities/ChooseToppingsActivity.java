@@ -5,15 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.davidvinegar.tacoria.Adapters.FirstChoiceOption;
 import com.davidvinegar.tacoria.Adapters.ToppingAdapter;
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.CheeseEvent;
 import com.davidvinegar.tacoria.events.LettuceEvent;
 import com.davidvinegar.tacoria.events.SalsaEvent;
+import com.davidvinegar.tacoria.events.UncheeseEvent;
 import com.davidvinegar.tacoria.events.UnlettuceEvent;
 import com.davidvinegar.tacoria.events.UnsalsaEvent;
 
@@ -73,7 +74,8 @@ public class ChooseToppingsActivity extends Activity {
                 intent.putExtra("hasChicken", ChooseToppingsActivity.this.hasChicken);
                 intent.putExtra("hasSalsa", ChooseToppingsActivity.this.hasSalsa);
                 intent.putExtra("hasLettuce", ChooseToppingsActivity.this.hasLettuce);
-                Log.v("onClickContinue", "hasLettuce is == "+ String.valueOf(hasLettuce));
+                intent.putExtra("hasCheese", ChooseToppingsActivity.this.hasLettuce);
+
 
                 startActivity(intent);
             }
@@ -90,7 +92,7 @@ public class ChooseToppingsActivity extends Activity {
         toppingsList.add(salsa);
         toppingsList.add(lettuce);
 
-//        toppingsList.add(cheese);
+        toppingsList.add(cheese);
 //        toppingsList.add(sourCream);
     }
 
@@ -111,5 +113,14 @@ public class ChooseToppingsActivity extends Activity {
     public void onEvent(UnlettuceEvent event) {
         hasLettuce = false;
     }
+
+    public void onEvent(UncheeseEvent event) {
+        hasCheese = false;
+    }
+
+    public void onEvent(CheeseEvent event) {
+        hasCheese = true;
+    }
+
 
 }
