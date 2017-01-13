@@ -74,7 +74,7 @@ public class ChooseToppingsActivity extends Activity {
                 intent.putExtra("hasChicken", ChooseToppingsActivity.this.hasChicken);
                 intent.putExtra("hasSalsa", ChooseToppingsActivity.this.hasSalsa);
                 intent.putExtra("hasLettuce", ChooseToppingsActivity.this.hasLettuce);
-                intent.putExtra("hasCheese", ChooseToppingsActivity.this.hasLettuce);
+                intent.putExtra("hasCheese", ChooseToppingsActivity.this.hasCheese);
 
 
                 startActivity(intent);
