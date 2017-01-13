@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import com.davidvinegar.tacoria.Model.Orderable;
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.RemoveOrderableEvent;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by davidvinegar on 1/4/17.
@@ -65,7 +68,7 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
     }
 
     @Override
-    public void onBindViewHolder(final OrderHolder viewHolder, int position){
+    public void onBindViewHolder(final OrderHolder viewHolder, final int position){
         viewHolder.orderableName.setText(mDataSet.get(position).getFoodType());
         DecimalFormat df = new DecimalFormat("0.00");
         String cost = df.format(mDataSet.get(position).getcost());//.replaceAll("\\.00$", "");
@@ -76,7 +79,9 @@ public class OrderSummaryAdapter  extends RecyclerView.Adapter<OrderSummaryAdapt
                 int newPosition = viewHolder.getAdapterPosition();
                 mDataSet.remove(newPosition);
                 notifyItemRemoved(newPosition);
-                notifyItemChanged(newPosition,mDataSet.size());
+                notifyItemChanged(newPosition, mDataSet.size());
+                EventBus.getDefault().post(new RemoveOrderableEvent(position));
+
             }
         });
     }

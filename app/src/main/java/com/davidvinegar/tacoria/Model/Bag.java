@@ -62,4 +62,8 @@ public class Bag {
         return getBagTotalCostPreTax() + getBagTax();
     }
 
+    public void removeUsingItemPosition(int position){
+        itemsInOrder.remove(position);
+    }
+
 }

@@ -13,8 +13,11 @@ import com.davidvinegar.tacoria.Adapters.OrderSummaryAdapter;
 import com.davidvinegar.tacoria.Model.Bag;
 import com.davidvinegar.tacoria.Model.Orderable;
 import com.davidvinegar.tacoria.R;
+import com.davidvinegar.tacoria.events.RemoveOrderableEvent;
 
 import java.text.DecimalFormat;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by davidvinegar on 12/28/16.
@@ -32,6 +35,9 @@ public class OrderSummaryActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_summary_layout);
+
+        EventBus.getDefault().register(this);
+
 
         Bundle bundle = getIntent().getExtras();
         buildOrderable(bundle);
@@ -51,19 +57,7 @@ public class OrderSummaryActivity extends Activity {
         continueCheckoutButton = (Button) findViewById(R.id.continue_To_Checkout);
         Button addFoodButton = (Button) findViewById(R.id.add_food_button);
 
-        double totalCost = bag.getBagTotalCostWithTax();
-        DecimalFormat df = new DecimalFormat("0.00");
-
-        TextView totalCostText = (TextView) findViewById(R.id.your_total_amount);
-        String totalCostFormatted = df.format(totalCost);
-        totalCostText.setText(totalCostFormatted);
-
-        double totalTax = bag.getBagTax();
-        TextView totalTaxText = (TextView) findViewById(R.id.your_tax_amount);
-
-        String formattedTax = df.format(totalTax);
-
-        totalTaxText.setText(formattedTax);
+        setCostAndTax();
 
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +76,22 @@ public class OrderSummaryActivity extends Activity {
         });
 
 
+    }
+
+    private void setCostAndTax() {
+        double totalCost = bag.getBagTotalCostWithTax();
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        TextView totalCostText = (TextView) findViewById(R.id.your_total_amount);
+        String totalCostFormatted = df.format(totalCost);
+        totalCostText.setText(totalCostFormatted);
+
+        double totalTax = bag.getBagTax();
+        TextView totalTaxText = (TextView) findViewById(R.id.your_tax_amount);
+
+        String formattedTax = df.format(totalTax);
+
+        totalTaxText.setText(formattedTax);
     }
 
     private void buildOrderable(Bundle bundle) {
@@ -151,5 +161,10 @@ public class OrderSummaryActivity extends Activity {
         }
         super.onBackPressed();
     }
+
+    public void onEvent(RemoveOrderableEvent event) {
+        setCostAndTax();
+    }
+
 
 }
